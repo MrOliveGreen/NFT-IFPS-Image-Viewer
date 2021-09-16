@@ -187,7 +187,9 @@
 				try {
 					response = JSON.parse(result);
 					console.log("image & text", response.image, response.name)
+					$(event.target).parents('.item').find("img").empty();
 					$(event.target).parents('.item').find("img").attr("src", response.image);
+					$(event.target).parents('.item').find(".text-center").empty();
 					$(event.target).parents('.item').find(".text-center").html(response.name);
 
 				} catch (t) {
@@ -206,7 +208,7 @@
 				if (response.image == '') {
 					$("#contents").append(`<div class="item">\
 						<div class="loader"></div>
-					<div class="text-center">${name}</div>\
+					<div class="text_center">${name}</div>\
 					<div class="refresh">\
 						<button class="btn btn-info" onclick="resendApi('${link}', event)")>Refresh</button>\
 					</div>\
@@ -214,7 +216,7 @@
 				} else {
 					$("#contents").append(`<div class="item">\
 					<img src="${response.image}">\
-					<div class="text_center">${name}</div>\
+					<div class="text-center">${name}</div>\
 					<div class="refresh">\
 						<button class="btn btn-info" onclick="resendApi('${link}', event)")>Refresh</button>\
 					</div>\
